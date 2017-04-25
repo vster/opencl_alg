@@ -8,7 +8,7 @@
 using namespace std;
 
 
-void main(void)
+int main(void)
 {
 		
 	OpenCL::CAST5 cs1;
