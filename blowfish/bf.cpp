@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include <opencl/blowfish.h>
 
 #define KL 32
