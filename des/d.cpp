@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include <opencl/des.h>
 #include <opencl/desx.h>
 
@@ -7,7 +8,7 @@
 
 using namespace std;
 
-void main(void)
+int main(void)
 {
 	OpenCL::DES d1;
 	OpenCL::byte key[KL] =  {0xaa,0xbb,0x09,0x18,0x27,0x36,0xcc,0xdd};
