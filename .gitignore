@@ -1,0 +1,9 @@
+*.user
+*.vcproj
+*.o
+Makefile*
+*.exe
+*.sln
+*.ncb
+Debug*
+*.suo
