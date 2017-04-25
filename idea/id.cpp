@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void main(void)
+int main(void)
 {
 	OpenCL::IDEA id1;
 	OpenCL::byte key[16];
