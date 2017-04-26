@@ -2,7 +2,7 @@
 
 using namespace std;
 
-void main(void)
+int main(void)
 {
 	OpenCL::ARC4 a1;
 	OpenCL::byte key[8];

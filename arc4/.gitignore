@@ -70,13 +70,4 @@ Thumbs.db
 *.dll
 *.exe
 
-*.user
-*.vcproj
-*.o
-Makefile*
-*.exe
-*.sln
-*.ncb
-Debug*
-*.suo
-build*
+

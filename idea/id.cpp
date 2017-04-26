@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include <opencl/idea.h>
 
 using namespace std;
