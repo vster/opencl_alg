@@ -8,13 +8,10 @@ SOURCES += \
     cast5.cpp \
     cast256.cpp \
     cst.cpp \
-    enc_tab.cpp \
-    encoder.cpp \
-    exceptn.cpp \
-    mlock.cpp \
-    opencl.cpp \
-    symkey.cpp \
-    util.cpp
+    ../exceptn.cpp \
+    ../mlock.cpp \
+    ../opencl.cpp \
+    ../util.cpp
 
 INCLUDEPATH += \
     ../include
