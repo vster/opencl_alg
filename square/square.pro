@@ -4,13 +4,13 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    exceptn.cpp \
-    mlock.cpp \
-    opencl.cpp \
     sqr_tab.cpp \
     sqr.cpp \
     square.cpp \
-    util.cpp
+    ../exceptn.cpp \
+    ../mlock.cpp \
+    ../opencl.cpp \
+    ../util.cpp
 
 INCLUDEPATH += \
     ../include
