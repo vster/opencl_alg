@@ -6,8 +6,7 @@
 
 using namespace std;
 
-
-void main(void)
+int main(void)
 {
 		
 	OpenCL::SAFER_SK128 safer;
