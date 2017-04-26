@@ -14,12 +14,8 @@ void DES::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    {
    u32bit left  = make_u32bit(in[0], in[1], in[2], in[3]),
           right = make_u32bit(in[4], in[5], in[6], in[7]);
-   IP(left, right);       
-   round(left, right, 0); 
-   round(right, left, 1);
-   round(left, right, 2); 
-   round(right, left, 3); 
-   round(left, right, 4);
+   IP(left, right);       round(left, right, 0); round(right, left, 1);
+   round(left, right, 2); round(right, left, 3); round(left, right, 4);
    round(right, left, 5); round(left, right, 6); round(right, left, 7);
    round(left, right, 8); round(right, left, 9); round(left, right,10);
    round(right, left,11); round(left, right,12); round(right, left,13);
