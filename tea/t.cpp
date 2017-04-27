@@ -7,7 +7,7 @@
 using namespace std;
 
 
-void main(void)
+int main(void)
 {
 		
 	OpenCL::TEA t1;
