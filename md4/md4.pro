@@ -4,17 +4,17 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    enc_tab.cpp \
-    encoder.cpp \
-    filtbase.cpp \
     hash.cpp \
     md4.cpp \
-    pipe_io.cpp \
-    secqueue.cpp \
     ../mlock.cpp \
     ../exceptn.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    ../enc_tab.cpp \
+    ../encoder.cpp \
+    ../pipe_io.cpp \
+    ../secqueue.cpp \
+    ../filtbase.cpp
 
 DISTFILES += \
     ClassDiagram1.cd \
