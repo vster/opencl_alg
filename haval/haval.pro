@@ -4,17 +4,17 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    enc_tab.cpp \
-    encoder.cpp \
-    filtbase.cpp \
     hash.cpp \
     haval.cpp \
-    pipe_io.cpp \
-    secqueue.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    ../enc_tab.cpp \
+    ../encoder.cpp \
+    ../filtbase.cpp \
+    ../pipe_io.cpp \
+    ../secqueue.cpp
 
 INCLUDEPATH += \
     ../include
