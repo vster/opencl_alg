@@ -4,18 +4,18 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+    md5.cpp \
     hash.cpp \
-    md4.cpp \
-    ../mlock.cpp \
-    ../exceptn.cpp \
-    ../opencl.cpp \
-    ../util.cpp \
     ../enc_tab.cpp \
     ../encoder.cpp \
+    ../exceptn.cpp \
+    ../filtbase.cpp \
+    ../mlock.cpp \
+    ../opencl.cpp \
     ../pipe_io.cpp \
     ../secqueue.cpp \
-    ../filtbase.cpp
-
+    ../util.cpp \
+    md5mac.cpp
 
 INCLUDEPATH += \
     ../include
