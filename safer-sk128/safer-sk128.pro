@@ -6,11 +6,11 @@ CONFIG -= qt
 SOURCES += \
     safe_tab.cpp \
     safer_sk.cpp \
-    safer.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    safer-main.cpp
 
 INCLUDEPATH += \
     ../include
