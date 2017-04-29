@@ -1,14 +1,11 @@
 #include <iostream>
+#include <iomanip>
 #include <opencl/gost.h>
 
 #define KL 32
 #define BS 8
 
-//const unsigned int KL 32;
-//const unsigned int BS 8;
-
 using namespace std;
-
 
 int main(void)
 {
@@ -23,33 +20,36 @@ int main(void)
 	for (i = 0; i < KL; i++)
 		key[i] = i;
 
-	printf("Key\n");
-	for (i = 0; i < KL; i++)
-		printf("%02x ", key[i]);
-	printf("\n");
+    cout << "Key" << endl;
+    for (i = 0; i < KL; i++)
+        cout << hex << setfill('0') << setw(2)
+             << (int)key[i] << " ";
+    cout << endl;
 
 	for (i = 0; i < BS; i++)
 		data[i] = i + 0x30;
 
-	printf("Initial data\n");
-	for (i = 0; i < BS; i++)
-		printf("%02x ", data[i]);
-	printf("\n");
+    cout << "Initial data" << endl;
+    for (i = 0; i < BS; i++)
+        cout << hex << setfill('0') << setw(2)
+             << (int)data[i] << " ";
+    cout << endl;
 
 	g1.set_key(key, KL);
 
 	g1.encrypt(data, datac);
 
-	printf("Encrypted data\n");
-	for (i = 0; i < BS; i++)
-		printf("%02x ", datac[i]);
-	printf("\n");
+    cout << "Encrypted data" << endl;
+    for (i = 0; i < BS; i++)
+        cout << hex << setfill('0') << setw(2)
+             << (int)datac[i] << " ";
+    cout << endl;
 
 	g1.decrypt(datac, datad);
 
-	printf("Decrypted data\n");
-	for (i = 0; i < BS; i++)
-		printf("%02x ", datad[i]);
-	printf("\n");
-
+    cout  << "Decrypted data" << endl;
+    for (i = 0; i < BS; i++)
+        cout << hex << setfill('0') << setw(2)
+             << (int)datad[i] << " ";
+    cout << endl;
 }

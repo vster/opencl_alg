@@ -20,7 +20,7 @@ int main(void)
 		key[i] = i;
 
     cout << "Key" << endl;
-	for (i = 0; i < KL; i++)
+    for (i = 0; i < KL; i++)
         cout << hex << setfill('0') << setw(2)
              << (int)key[i] << " ";
     cout << endl;
