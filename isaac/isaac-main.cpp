@@ -1,47 +1,43 @@
 #include <iostream>
+#include <iomanip>
 #include <opencl/isaac.h>
 
+#define KL 16
+#define BS 8
+
 using namespace std;
+using namespace OpenCL;
+
+void output_hex(byte data[],int len)
+{
+    for (int i = 0; i < len; i++)
+        cout << hex << setfill('0') << setw(2)
+             << (int)data[i] << " ";
+    cout << endl;
+}
 
 int main(void)
 {
-	OpenCL::ISAAC is1;
-	OpenCL::byte key[16];
-	OpenCL::byte data[8];
-	OpenCL::byte datac[8];
-	OpenCL::byte datad[8]; 
-	int i;
+    OpenCL::ISAAC is1;
+    byte key[KL];
+    byte data[BS];
+    byte datac[BS];
+    byte datad[BS];
+    int i;
 
-	for (i = 0; i < 16; i++)
-		key[i] = i;
+    for (i = 0; i < KL; i++)
+        key[i] = i;
 
-	printf("Key\n");
-	for (i = 0; i < 16; i++)
-		printf("%02x ", key[i]);
-	printf("\n");
+    cout << "Key" << endl;
+    output_hex(key, KL);
 
-	for (i = 0; i < 8; i++)
-		data[i] = i + 0x30;
+    for (i = 0; i < BS; i++)
+        data[i] = i + 0x30;
 
-	printf("Initial data\n");
-	for (i = 0; i < 8; i++)
-		printf("%02x ", data[i]);
-	printf("\n");
+    cout << "Initial data" << endl;
+    output_hex(data, BS);
 
-	is1.set_key(key,16);
+    is1.set_key(key, KL);
 
-	is1.encrypt(data, datac, 8);
-
-	printf("Encrypted data\n");
-	for (i = 0; i < 8; i++)
-		printf("%02x ", datac[i]);
-	printf("\n");
-
-	is1.decrypt(datac, datad, 8);
-
-	printf("Decrypted data\n");
-	for (i = 0; i < 8; i++)
-		printf("%02x ", datad[i]);
-	printf("\n");
 
 }
