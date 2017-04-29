@@ -5,12 +5,12 @@ CONFIG -= qt
 
 SOURCES += \
     cs_tab.cpp \
-    cs.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
     ../util.cpp \
-    cscipher.cpp
+    cscipher.cpp \
+    cscipher-main.cpp
 
 INCLUDEPATH += \
     ../include

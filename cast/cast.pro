@@ -7,11 +7,11 @@ SOURCES += \
     cast_tab.cpp \
     cast5.cpp \
     cast256.cpp \
-    cst.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    cast-main.cpp
 
 INCLUDEPATH += \
     ../include
