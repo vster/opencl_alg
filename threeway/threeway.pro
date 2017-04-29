@@ -5,11 +5,11 @@ CONFIG -= qt
 
 SOURCES += \
     threeway.cpp \
-    thwy.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    threeway-main.cpp
 
 INCLUDEPATH += \
     ../include

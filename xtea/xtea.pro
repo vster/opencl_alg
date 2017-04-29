@@ -6,11 +6,11 @@ CONFIG -= qt
 SOURCES += \
     xtea.cpp \
     xtea_tab.cpp \
-    xt.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    xtea-main.cpp
 
 INCLUDEPATH += \
     ../include
