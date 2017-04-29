@@ -1,5 +1,5 @@
 #include <iostream>
-#include <stdio.h>
+#include <iomanip>
 #include <opencl/blowfish.h>
 
 #define KL 32
@@ -7,10 +7,8 @@
 
 using namespace std;
 
-
 int main(void)
-{
-		
+{	
 	OpenCL::Blowfish bf1;
 	OpenCL::byte key[KL];
 	OpenCL::byte data[BS];
@@ -21,33 +19,36 @@ int main(void)
 	for (i = 0; i < KL; i++)
 		key[i] = i;
 
-	printf("Key\n");
+    cout << "Key" << endl;
 	for (i = 0; i < KL; i++)
-		printf("%02x ", key[i]);
-	printf("\n");
+        cout << hex << setfill('0') << setw(2)
+             << (int)key[i] << " ";
+    cout << endl;
 
 	for (i = 0; i < BS; i++)
 		data[i] = i + 0x30;
 
-	printf("Initial data\n");
+    cout << "Initial data" << endl;
 	for (i = 0; i < BS; i++)
-		printf("%02x ", data[i]);
-	printf("\n");
+        cout << hex << setfill('0') << setw(2)
+             << (int)data[i] << " ";
+    cout << endl;
 
 	bf1.set_key(key, KL);
 
 	bf1.encrypt(data, datac);
 
-	printf("Encrypted data\n");
+    cout << "Encrypted data" << endl;
 	for (i = 0; i < BS; i++)
-		printf("%02x ", datac[i]);
-	printf("\n");
+        cout << hex << setfill('0') << setw(2)
+             << (int)datac[i] << " ";
+    cout << endl;
 
 	bf1.decrypt(datac, datad);
 
-	printf("Decrypted data\n");
+    cout  << "Decrypted data" << endl;
 	for (i = 0; i < BS; i++)
-		printf("%02x ", datad[i]);
-	printf("\n");
-
+        cout << hex << setfill('0') << setw(2)
+             << (int)datad[i] << " ";
+    cout << endl;
 }
