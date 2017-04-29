@@ -6,11 +6,11 @@ CONFIG -= qt
 SOURCES += \
     skip_tab.cpp \
     skipjack.cpp \
-    skp.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    skipjack-main.cpp
 
 INCLUDEPATH += \
     ../include

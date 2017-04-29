@@ -6,11 +6,11 @@ CONFIG -= qt
 SOURCES += \
     shark.cpp \
     shrk_tab.cpp \
-    shrk.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    shark-main.cpp
 
 INCLUDEPATH += \
     ../include
