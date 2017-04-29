@@ -4,13 +4,13 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    bf.cpp \
     blfs_tab.cpp \
     blowfish.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    blowfish-main.cpp
 
 INCLUDEPATH += \
     ../include

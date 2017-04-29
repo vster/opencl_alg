@@ -4,12 +4,12 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    id.cpp \
     idea.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    idea-main.cpp
 
 INCLUDEPATH += \
     ../include

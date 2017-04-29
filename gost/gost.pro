@@ -4,13 +4,13 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    g.cpp \
     gost_tab.cpp \
     gost.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    gost-main.cpp
 
 INCLUDEPATH += \
     ../include
