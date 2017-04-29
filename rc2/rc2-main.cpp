@@ -1,8 +1,8 @@
 #include <iostream>
 #include <iomanip>
-#include <opencl/idea.h>
+#include <opencl/rc2.h>
 
-#define KL 16
+#define KL 32
 #define BS 8
 
 using namespace std;
@@ -18,7 +18,7 @@ void output_hex(byte data[],int len)
 
 int main(void)
 {
-    OpenCL::IDEA id1;
+    OpenCL::RC2 rc;
     byte key[KL];
     byte data[BS];
     byte datac[BS];
@@ -37,14 +37,14 @@ int main(void)
     cout << "Initial data" << endl;
     output_hex(data, BS);
 
-    id1.set_key(key, KL);
+    rc.set_key(key, KL);
 
-    id1.encrypt(data, datac);
+    rc.encrypt(data, datac);
 
     cout << "Encrypted data" << endl;
     output_hex(datac, BS);
 
-    id1.decrypt(datac, datad);
+    rc.decrypt(datac, datad);
 
     cout  << "Decrypted data" << endl;
     output_hex(datad, BS);

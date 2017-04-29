@@ -4,13 +4,13 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    rc.cpp \
     rc2_tab.cpp \
     rc2.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    rc2-main.cpp
 
 INCLUDEPATH += \
     ../include

@@ -6,50 +6,46 @@
 #define BS 8
 
 using namespace std;
+using namespace OpenCL;
 
-int main(void)
+void output_hex(byte data[],int len)
 {
-		
-	OpenCL::GOST g1;
-	OpenCL::byte key[KL];
-	OpenCL::byte data[BS];
-	OpenCL::byte datac[BS];
-	OpenCL::byte datad[BS]; 
-	int i;
-
-	for (i = 0; i < KL; i++)
-		key[i] = i;
-
-    cout << "Key" << endl;
-    for (i = 0; i < KL; i++)
-        cout << hex << setfill('0') << setw(2)
-             << (int)key[i] << " ";
-    cout << endl;
-
-	for (i = 0; i < BS; i++)
-		data[i] = i + 0x30;
-
-    cout << "Initial data" << endl;
-    for (i = 0; i < BS; i++)
+    for (int i = 0; i < len; i++)
         cout << hex << setfill('0') << setw(2)
              << (int)data[i] << " ";
     cout << endl;
+}
 
-	g1.set_key(key, KL);
+int main(void)
+{
+    OpenCL::GOST g1;
+    byte key[KL];
+    byte data[BS];
+    byte datac[BS];
+    byte datad[BS];
+    int i;
 
-	g1.encrypt(data, datac);
+    for (i = 0; i < KL; i++)
+        key[i] = i;
+
+    cout << "Key" << endl;
+    output_hex(key, KL);
+
+    for (i = 0; i < BS; i++)
+        data[i] = i + 0x30;
+
+    cout << "Initial data" << endl;
+    output_hex(data, BS);
+
+    g1.set_key(key, KL);
+
+    g1.encrypt(data, datac);
 
     cout << "Encrypted data" << endl;
-    for (i = 0; i < BS; i++)
-        cout << hex << setfill('0') << setw(2)
-             << (int)datac[i] << " ";
-    cout << endl;
+    output_hex(datac, BS);
 
-	g1.decrypt(datac, datad);
+    g1.decrypt(datac, datad);
 
     cout  << "Decrypted data" << endl;
-    for (i = 0; i < BS; i++)
-        cout << hex << setfill('0') << setw(2)
-             << (int)datad[i] << " ";
-    cout << endl;
+    output_hex(datad, BS);
 }
