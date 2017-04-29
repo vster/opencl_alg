@@ -4,7 +4,6 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    hash.cpp \
     md2_tab.cpp \
     md2.cpp \
     ../exceptn.cpp \
@@ -15,7 +14,8 @@ SOURCES += \
     ../encoder.cpp \
     ../filtbase.cpp \
     ../pipe_io.cpp \
-    ../secqueue.cpp
+    ../secqueue.cpp \
+    md2-main.cpp
 
 INCLUDEPATH += \
     ../include
