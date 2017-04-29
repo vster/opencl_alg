@@ -5,12 +5,12 @@ CONFIG -= qt
 
 SOURCES += \
     sqr_tab.cpp \
-    sqr.cpp \
     square.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    square-main.cpp
 
 INCLUDEPATH += \
     ../include
