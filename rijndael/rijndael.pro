@@ -4,13 +4,13 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    rd.cpp \
     rijn_tab.cpp \
     rijndael.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    rijndael-main.cpp
 
 DISTFILES += \
     ClassDiagram1.cd \
