@@ -5,12 +5,12 @@ CONFIG -= qt
 
 SOURCES += \
     mist_tab.cpp \
-    mst.cpp \
     misty1.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp
+    ../util.cpp \
+    misty1-main.cpp
 
 INCLUDEPATH += \
     ../include
