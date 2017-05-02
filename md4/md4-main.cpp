@@ -12,29 +12,32 @@ This file is in the public domain
 #include <opencl/md4.h>
 #include <opencl/encoder.h>
 
+using namespace std;
+using namespace OpenCL;
+
 int main(int argc, char* argv[])
 {
    if(argc < 2)
       {
-      std::cout << "Usage: hasher <filenames>" << std::endl;
+      cout << "Usage: hasher <filenames>" << endl;
       return 1;
       }
 
    const int COUNT = 1;
-   OpenCL::Filter* hash[COUNT] = {
-      new OpenCL::Chain(new OpenCL::HashFilter<OpenCL::MD4>,
-						new OpenCL::HexEncoder)  };
-   std::string name[COUNT] = { "MD4" };
+   Filter* hash[COUNT] = {
+      new Chain(new HashFilter<MD4>,
+                        new HexEncoder)  };
+   string name[COUNT] = { "MD4" };
 
-   OpenCL::Fork* fork = new OpenCL::Fork(hash, COUNT);
-   OpenCL::Pipe pipe(fork);
+   Fork* fork = new Fork(hash, COUNT);
+   Pipe pipe(fork);
 
    for(int j = 1; argv[j] != 0; j++)
       {
-      std::ifstream file(argv[j]);
+      ifstream file(argv[j]);
       if(!file)
          {
-         std::cout << "ERROR: could not open " << argv[j] << std::endl;
+         cout << "ERROR: could not open " << argv[j] << endl;
          continue;
          }
       file >> pipe;
@@ -43,7 +46,7 @@ int main(int argc, char* argv[])
       for(int k = 0; k != COUNT; k++)
          {
          fork->set_port(k);
-         std::cout << name[k] << "(" << argv[j] << ") = " << pipe << std::endl;
+         cout << name[k] << "(" << argv[j] << ") = " << pipe << endl;
          }
       }
    return 0;

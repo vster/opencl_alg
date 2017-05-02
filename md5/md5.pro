@@ -5,7 +5,6 @@ CONFIG -= qt
 
 SOURCES += \
     md5.cpp \
-    hash.cpp \
     ../enc_tab.cpp \
     ../encoder.cpp \
     ../exceptn.cpp \
@@ -15,7 +14,8 @@ SOURCES += \
     ../pipe_io.cpp \
     ../secqueue.cpp \
     ../util.cpp \
-    md5mac.cpp
+    md5mac.cpp \
+    md5-main.cpp
 
 INCLUDEPATH += \
     ../include

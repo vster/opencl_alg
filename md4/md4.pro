@@ -4,7 +4,6 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-    hash.cpp \
     md4.cpp \
     ../mlock.cpp \
     ../exceptn.cpp \
@@ -14,7 +13,8 @@ SOURCES += \
     ../encoder.cpp \
     ../pipe_io.cpp \
     ../secqueue.cpp \
-    ../filtbase.cpp
+    ../filtbase.cpp \
+    md4-main.cpp
 
 
 INCLUDEPATH += \
