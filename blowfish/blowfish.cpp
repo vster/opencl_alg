@@ -118,12 +118,29 @@ void Blowfish::generate_sbox(u32bit Box[], u32bit size,
    {
    for(u32bit j = 0; j != size; j += 2)
       {
-      round(L, R, 0); round(R, L, 1); round(L, R, 2); round(R, L, 3);
-      round(L, R, 4); round(R, L, 5); round(L, R, 6); round(R, L, 7);
-      round(L, R, 8); round(R, L, 9); round(L, R,10); round(R, L,11);
-      round(L, R,12); round(R, L,13); round(L, R,14); round(R, L,15);
-      u32bit T = R; R = L ^ Pbox[16]; L = T ^ Pbox[17];
-      Box[j] = L; Box[j+1] = R;
+      round(L, R, 0);
+      round(R, L, 1);
+      round(L, R, 2);
+      round(R, L, 3);
+      round(L, R, 4);
+      round(R, L, 5);
+      round(L, R, 6);
+      round(R, L, 7);
+      round(L, R, 8);
+      round(R, L, 9);
+      round(L, R,10);
+      round(R, L,11);
+      round(L, R,12);
+      round(R, L,13);
+      round(L, R,14);
+      round(R, L,15);
+
+      u32bit T = R;
+      R = L ^ Pbox[16];
+      L = T ^ Pbox[17];
+
+      Box[j] = L;
+      Box[j+1] = R;
       }
    }
 
