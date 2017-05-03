@@ -13,35 +13,24 @@ namespace OpenCL {
 void Blowfish::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
      {
    u32bit L  = make_u32bit(in[0], in[1], in[2], in[3]),
-          R = make_u32bit(in[4], in[5], in[6], in[7]);
-   round(L, R, 0);
-   round(R, L, 1);
-   round(L, R, 2);
-   round(R, L, 3);
-   round(L, R, 4);
-   round(R, L, 5);
-   round(L, R, 6);
-   round(R, L, 7);
-   round(L, R, 8);
-   round(R, L, 9);
-   round(L, R,10);
-   round(R, L,11);
-   round(L, R,12);
-   round(R, L,13);
-   round(L, R,14);
-   round(R, L,15);
+          R  = make_u32bit(in[4], in[5], in[6], in[7]);
+
+   for(int i=0; i<16; i++)
+       {
+       if (i%2 == 0)
+           round(L, R, i);
+       else
+           round(R, L, i);
+       }
 
    L ^= Pbox[16];
    R ^= Pbox[17];
 
-   out[0] = get_byte(0, R);
-   out[1] = get_byte(1, R);
-   out[2] = get_byte(2, R);
-   out[3] = get_byte(3, R);
-   out[4] = get_byte(0, L);
-   out[5] = get_byte(1, L);
-   out[6] = get_byte(2, L);
-   out[7] = get_byte(3, L);
+   for (int i=0; i<4; i++)
+       out[i] = get_byte(i, R);
+
+   for (int i=0; i<4; i++)
+       out[i+4] = get_byte(i, L);
    }
 
 /*************************************************
