@@ -12,20 +12,43 @@ namespace OpenCL {
 *************************************************/
 void IDEA::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    {
-   u16bit X1 = make_u16bit(in[0], in[1]), X2 = make_u16bit(in[2], in[3]),
-          X3 = make_u16bit(in[4], in[5]), X4 = make_u16bit(in[6], in[7]);
+   u16bit X1 = make_u16bit(in[0], in[1]),
+          X2 = make_u16bit(in[2], in[3]),
+          X3 = make_u16bit(in[4], in[5]),
+          X4 = make_u16bit(in[6], in[7]);
    for(u32bit j = 0; j != 8; j++)
       {
-      mul(X1, EK[6*j+0]); X2 += EK[6*j+1]; X3 += EK[6*j+2];
-      mul(X4, EK[6*j+3]); u16bit T1 = X3; X3 ^= X1; mul(X3, EK[6*j+4]);
-      u16bit T0 = X2; X2 = (u16bit)((X2 ^ X4) + X3); mul(X2, EK[6*j+5]);
-      X3 += X2; X1 ^= X2; X4 ^= X3; X2 ^= T1; X3 ^= T0;
+      mul(X1, EK[6*j+0]);
+      X2 += EK[6*j+1];
+      X3 += EK[6*j+2];
+      mul(X4, EK[6*j+3]);
+
+      u16bit T1 = X3;
+      X3 ^= X1;
+      mul(X3, EK[6*j+4]);
+
+      u16bit T0 = X2;
+      X2 = (u16bit)((X2 ^ X4) + X3);
+      mul(X2, EK[6*j+5]);
+
+      X3 += X2;
+      X1 ^= X2;
+      X4 ^= X3;
+      X2 ^= T1;
+      X3 ^= T0;
       }
-   mul(X1, EK[48]); X2 += EK[50]; X3 += EK[49]; mul(X4, EK[51]);
-   out[0] = get_byte(0, X1); out[1] = get_byte(1, X1);
-   out[2] = get_byte(0, X3); out[3] = get_byte(1, X3);
-   out[4] = get_byte(0, X2); out[5] = get_byte(1, X2);
-   out[6] = get_byte(0, X4); out[7] = get_byte(1, X4);
+   mul(X1, EK[48]);
+   X2 += EK[50];
+   X3 += EK[49];
+   mul(X4, EK[51]);
+   out[0] = get_byte(0, X1);
+   out[1] = get_byte(1, X1);
+   out[2] = get_byte(0, X3);
+   out[3] = get_byte(1, X3);
+   out[4] = get_byte(0, X2);
+   out[5] = get_byte(1, X2);
+   out[6] = get_byte(0, X4);
+   out[7] = get_byte(1, X4);
    }
 
 /*************************************************
