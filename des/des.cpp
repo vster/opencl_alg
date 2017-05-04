@@ -16,6 +16,16 @@ void DES::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
           right = make_u32bit(in[4], in[5], in[6], in[7]);
 
    IP(left, right);
+
+   for (int i=0; i<16; i++)
+   {
+       if (i%2 == 0)
+            round(left, right, i);
+       else
+            round(right, left, i);
+   }
+
+   /*
    round(left, right, 0);
    round(right, left, 1);
    round(left, right, 2);
@@ -32,6 +42,7 @@ void DES::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    round(right, left,13);
    round(left, right,14);
    round(right, left,15);
+   */
 
    FP(left, right);
 
