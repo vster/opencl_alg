@@ -69,8 +69,14 @@ void CS_Cipher::decrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
       buf[14] = TD1[P[buf[ 3]] ^ P[buf[ 7]]]              ^ EK[j +  6];
       buf[15] = TD2[P[buf[ 3]] ^ P[buf[ 7]]] ^ P[buf[ 7]] ^ EK[j +  7];
       }
-   out[0] = buf[ 8]; out[1] = buf[ 9]; out[2] = buf[10]; out[3] = buf[11];
-   out[4] = buf[12]; out[5] = buf[13]; out[6] = buf[14]; out[7] = buf[15];
+   out[0] = buf[ 8];
+   out[1] = buf[ 9];
+   out[2] = buf[10];
+   out[3] = buf[11];
+   out[4] = buf[12];
+   out[5] = buf[13];
+   out[6] = buf[14];
+   out[7] = buf[15];
    }
 
 /*************************************************
