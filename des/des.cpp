@@ -18,42 +18,20 @@ void DES::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    IP(left, right);
 
    for (int i=0; i<16; i++)
-   {
+       {
        if (i%2 == 0)
             round(left, right, i);
        else
             round(right, left, i);
-   }
-
-   /*
-   round(left, right, 0);
-   round(right, left, 1);
-   round(left, right, 2);
-   round(right, left, 3);
-   round(left, right, 4);
-   round(right, left, 5);
-   round(left, right, 6);
-   round(right, left, 7);
-   round(left, right, 8);
-   round(right, left, 9);
-   round(left, right,10);
-   round(right, left,11);
-   round(left, right,12);
-   round(right, left,13);
-   round(left, right,14);
-   round(right, left,15);
-   */
+       }
 
    FP(left, right);
 
-   out[0] = get_byte(0, right);
-   out[1] = get_byte(1, right);
-   out[2] = get_byte(2, right);
-   out[3] = get_byte(3, right);
-   out[4] = get_byte(0, left);
-   out[5] = get_byte(1, left);
-   out[6] = get_byte(2, left);
-   out[7] = get_byte(3, left);
+   for (int i=0; i<4; i++)
+        out[i] = get_byte(i, right);
+   for (int i=0; i<4; i++)
+        out[i+4] = get_byte(i, left);
+
    }
 
 /*************************************************
