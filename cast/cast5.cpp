@@ -14,26 +14,22 @@ void CAST5::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    {
    u32bit left  = make_u32bit(in[0], in[1], in[2], in[3]),
           right = make_u32bit(in[4], in[5], in[6], in[7]);
+
    round1(left, right, 0);
    round2(right, left, 1);
    round3(left, right, 2);
-
    round1(right, left, 3);
    round2(left, right, 4);
    round3(right, left, 5);
-
    round1(left, right, 6);
    round2(right, left, 7);
    round3(left, right, 8);
-
    round1(right, left, 9);
    round2(left, right,10);
    round3(right, left,11);
-
    round1(left, right,12);
    round2(right, left,13);
    round3(left, right,14);
-
    round1(right, left,15);
 
    out[0] = get_byte(0, right);
@@ -53,16 +49,32 @@ void CAST5::decrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    {
    u32bit left  = make_u32bit(in[0], in[1], in[2], in[3]),
           right = make_u32bit(in[4], in[5], in[6], in[7]);
-   round1(left, right,15); round3(right, left,14); round2(left, right,13);
-   round1(right, left,12); round3(left, right,11); round2(right, left,10);
-   round1(left, right, 9); round3(right, left, 8); round2(left, right, 7);
-   round1(right, left, 6); round3(left, right, 5); round2(right, left, 4);
-   round1(left, right, 3); round3(right, left, 2); round2(left, right, 1);
+
+   round1(left, right,15);
+   round3(right, left,14);
+   round2(left, right,13);
+   round1(right, left,12);
+   round3(left, right,11);
+   round2(right, left,10);
+   round1(left, right, 9);
+   round3(right, left, 8);
+   round2(left, right, 7);
+   round1(right, left, 6);
+   round3(left, right, 5);
+   round2(right, left, 4);
+   round1(left, right, 3);
+   round3(right, left, 2);
+   round2(left, right, 1);
    round1(right, left, 0);
-   out[0] = get_byte(0, right); out[1] = get_byte(1, right);
-   out[2] = get_byte(2, right); out[3] = get_byte(3, right);
-   out[4] = get_byte(0, left);  out[5] = get_byte(1, left);
-   out[6] = get_byte(2, left);  out[7] = get_byte(3, left);
+
+   out[0] = get_byte(0, right);
+   out[1] = get_byte(1, right);
+   out[2] = get_byte(2, right);
+   out[3] = get_byte(3, right);
+   out[4] = get_byte(0, left);
+   out[5] = get_byte(1, left);
+   out[6] = get_byte(2, left);
+   out[7] = get_byte(3, left);
    }
 
 /*************************************************

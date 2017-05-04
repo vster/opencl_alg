@@ -11,7 +11,7 @@ SOURCES += \
     ../mlock.cpp \
     ../opencl.cpp \
     ../util.cpp \
-    cast-main.cpp
+    cast5-main.cpp
 
 INCLUDEPATH += \
     ../include
