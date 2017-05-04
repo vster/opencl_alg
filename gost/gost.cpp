@@ -14,26 +14,50 @@ void GOST::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    {
    u32bit N1 = make_u32bit(in[3], in[2], in[1], in[0]),
           N2 = make_u32bit(in[7], in[6], in[5], in[4]);
-   round(N2, N1 + EK[ 0]); round(N1, N2 + EK[ 1]);
-   round(N2, N1 + EK[ 2]); round(N1, N2 + EK[ 3]);
-   round(N2, N1 + EK[ 4]); round(N1, N2 + EK[ 5]);
-   round(N2, N1 + EK[ 6]); round(N1, N2 + EK[ 7]);
-   round(N2, N1 + EK[ 0]); round(N1, N2 + EK[ 1]);
-   round(N2, N1 + EK[ 2]); round(N1, N2 + EK[ 3]);
-   round(N2, N1 + EK[ 4]); round(N1, N2 + EK[ 5]);
-   round(N2, N1 + EK[ 6]); round(N1, N2 + EK[ 7]);
-   round(N2, N1 + EK[ 0]); round(N1, N2 + EK[ 1]);
-   round(N2, N1 + EK[ 2]); round(N1, N2 + EK[ 3]);
-   round(N2, N1 + EK[ 4]); round(N1, N2 + EK[ 5]);
-   round(N2, N1 + EK[ 6]); round(N1, N2 + EK[ 7]);
-   round(N2, N1 + EK[ 7]); round(N1, N2 + EK[ 6]);
-   round(N2, N1 + EK[ 5]); round(N1, N2 + EK[ 4]);
-   round(N2, N1 + EK[ 3]); round(N1, N2 + EK[ 2]);
-   round(N2, N1 + EK[ 1]); round(N1, N2 + EK[ 0]);
-   out[0] = get_byte(3, N2); out[1] = get_byte(2, N2);
-   out[2] = get_byte(1, N2); out[3] = get_byte(0, N2);
-   out[4] = get_byte(3, N1); out[5] = get_byte(2, N1);
-   out[6] = get_byte(1, N1); out[7] = get_byte(0, N1);
+   round(N2, N1 + EK[ 0]);
+   round(N1, N2 + EK[ 1]);
+   round(N2, N1 + EK[ 2]);
+   round(N1, N2 + EK[ 3]);
+   round(N2, N1 + EK[ 4]);
+   round(N1, N2 + EK[ 5]);
+   round(N2, N1 + EK[ 6]);
+   round(N1, N2 + EK[ 7]);
+
+   round(N2, N1 + EK[ 0]);
+   round(N1, N2 + EK[ 1]);
+   round(N2, N1 + EK[ 2]);
+   round(N1, N2 + EK[ 3]);
+   round(N2, N1 + EK[ 4]);
+   round(N1, N2 + EK[ 5]);
+   round(N2, N1 + EK[ 6]);
+   round(N1, N2 + EK[ 7]);
+
+   round(N2, N1 + EK[ 0]);
+   round(N1, N2 + EK[ 1]);
+   round(N2, N1 + EK[ 2]);
+   round(N1, N2 + EK[ 3]);
+   round(N2, N1 + EK[ 4]);
+   round(N1, N2 + EK[ 5]);
+   round(N2, N1 + EK[ 6]);
+   round(N1, N2 + EK[ 7]);
+
+   round(N2, N1 + EK[ 7]);
+   round(N1, N2 + EK[ 6]);
+   round(N2, N1 + EK[ 5]);
+   round(N1, N2 + EK[ 4]);
+   round(N2, N1 + EK[ 3]);
+   round(N1, N2 + EK[ 2]);
+   round(N2, N1 + EK[ 1]);
+   round(N1, N2 + EK[ 0]);
+
+   out[0] = get_byte(3, N2);
+   out[1] = get_byte(2, N2);
+   out[2] = get_byte(1, N2);
+   out[3] = get_byte(0, N2);
+   out[4] = get_byte(3, N1);
+   out[5] = get_byte(2, N1);
+   out[6] = get_byte(1, N1);
+   out[7] = get_byte(0, N1);
    }
 
 /*************************************************
