@@ -43,33 +43,20 @@ void DES::decrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
           right = make_u32bit(in[4], in[5], in[6], in[7]);
    IP(left, right);
 
-   round(left, right,15);
-   round(right, left,14);
-   round(left, right,13);
-   round(right, left,12);
-   round(left, right,11);
-   round(right, left,10);
-   round(left, right, 9);
-   round(right, left, 8);
-   round(left, right, 7);
-   round(right, left, 6);
-   round(left, right, 5);
-   round(right, left, 4);
-   round(left, right, 3);
-   round(right, left, 2);
-   round(left, right, 1);
-   round(right, left, 0);
+   for (int i=15; i>=0; i--)
+       {
+       if (i%2 == 1)
+            round(left, right, i);
+       else
+            round(right, left, i);
+       }
 
    FP(left, right);
 
-   out[0] = get_byte(0, right);
-   out[1] = get_byte(1, right);
-   out[2] = get_byte(2, right);
-   out[3] = get_byte(3, right);
-   out[4] = get_byte(0, left);
-   out[5] = get_byte(1, left);
-   out[6] = get_byte(2, left);
-   out[7] = get_byte(3, left);
+   for (int i=0; i<4; i++)
+        out[i] = get_byte(i, right);
+   for (int i=0; i<4; i++)
+        out[i+4] = get_byte(i, left);
    }
 
 /*************************************************
