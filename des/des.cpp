@@ -125,11 +125,21 @@ void DES::FP(u32bit& L, u32bit& R)
 *************************************************/
 void DES::raw_encrypt(u32bit& left, u32bit& right) const
    {
-   round(left, right, 0); round(right, left, 1); round(left, right, 2);
-   round(right, left, 3); round(left, right, 4); round(right, left, 5);
-   round(left, right, 6); round(right, left, 7); round(left, right, 8);
-   round(right, left, 9); round(left, right,10); round(right, left,11);
-   round(left, right,12); round(right, left,13); round(left, right,14);
+   round(left, right, 0);
+   round(right, left, 1);
+   round(left, right, 2);
+   round(right, left, 3);
+   round(left, right, 4);
+   round(right, left, 5);
+   round(left, right, 6);
+   round(right, left, 7);
+   round(left, right, 8);
+   round(right, left, 9);
+   round(left, right,10);
+   round(right, left,11);
+   round(left, right,12);
+   round(right, left,13);
+   round(left, right,14);
    round(right, left,15);
    }
 
@@ -138,11 +148,21 @@ void DES::raw_encrypt(u32bit& left, u32bit& right) const
 *************************************************/
 void DES::raw_decrypt(u32bit& left, u32bit& right) const
    {
-   round(left, right,15); round(right, left,14); round(left, right,13);
-   round(right, left,12); round(left, right,11); round(right, left,10);
-   round(left, right, 9); round(right, left, 8); round(left, right, 7);
-   round(right, left, 6); round(left, right, 5); round(right, left, 4);
-   round(left, right, 3); round(right, left, 2); round(left, right, 1);
+   round(left, right,15);
+   round(right, left,14);
+   round(left, right,13);
+   round(right, left,12);
+   round(left, right,11);
+   round(right, left,10);
+   round(left, right, 9);
+   round(right, left, 8);
+   round(left, right, 7);
+   round(right, left, 6);
+   round(left, right, 5);
+   round(right, left, 4);
+   round(left, right, 3);
+   round(right, left, 2);
+   round(left, right, 1);
    round(right, left, 0);
    }
 
@@ -224,10 +244,14 @@ void TripleDES::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    des2.raw_decrypt(right, left);
    des3.raw_encrypt(left, right);
    DES::FP(left, right);
-   out[0] = get_byte(0, right); out[1] = get_byte(1, right);
-   out[2] = get_byte(2, right); out[3] = get_byte(3, right);
-   out[4] = get_byte(0, left);  out[5] = get_byte(1, left);
-   out[6] = get_byte(2, left);  out[7] = get_byte(3, left);
+   out[0] = get_byte(0, right);
+   out[1] = get_byte(1, right);
+   out[2] = get_byte(2, right);
+   out[3] = get_byte(3, right);
+   out[4] = get_byte(0, left);
+   out[5] = get_byte(1, left);
+   out[6] = get_byte(2, left);
+   out[7] = get_byte(3, left);
    }
 
 /*************************************************
@@ -242,10 +266,14 @@ void TripleDES::decrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    des2.raw_encrypt(right, left);
    des1.raw_decrypt(left, right);
    DES::FP(left, right);
-   out[0] = get_byte(0, right); out[1] = get_byte(1, right);
-   out[2] = get_byte(2, right); out[3] = get_byte(3, right);
-   out[4] = get_byte(0, left);  out[5] = get_byte(1, left);
-   out[6] = get_byte(2, left);  out[7] = get_byte(3, left);
+   out[0] = get_byte(0, right);
+   out[1] = get_byte(1, right);
+   out[2] = get_byte(2, right);
+   out[3] = get_byte(3, right);
+   out[4] = get_byte(0, left);
+   out[5] = get_byte(1, left);
+   out[6] = get_byte(2, left);
+   out[7] = get_byte(3, left);
    }
 
 /*************************************************
