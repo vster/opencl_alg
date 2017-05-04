@@ -6,7 +6,6 @@ CONFIG -= qt
 SOURCES += \
     des_tab.cpp \
     des.cpp \
-    desx.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \

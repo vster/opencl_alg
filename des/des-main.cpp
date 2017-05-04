@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 #include <opencl/des.h>
-#include <opencl/desx.h>
 
 #define KL 8
 #define BS 8
