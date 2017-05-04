@@ -40,34 +40,24 @@ void Blowfish::decrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    {
    u32bit L  = make_u32bit(in[0], in[1], in[2], in[3]),
           R = make_u32bit(in[4], in[5], in[6], in[7]);
-   round(L, R,17);
-   round(R, L,16);
-   round(L, R,15);
-   round(R, L,14);
-   round(L, R,13);
-   round(R, L,12);
-   round(L, R,11);
-   round(R, L,10);
-   round(L, R, 9);
-   round(R, L, 8);
-   round(L, R, 7);
-   round(R, L, 6);
-   round(L, R, 5);
-   round(R, L, 4);
-   round(L, R, 3);
-   round(R, L, 2);
+
+   for(int i=17; i>1; i--)
+       {
+       if (i%2 == 1)
+           round(L, R, i);
+       else
+           round(R, L, i);
+       }
 
    L ^= Pbox[1];
    R ^= Pbox[0];
 
-   out[0] = get_byte(0, R);
-   out[1] = get_byte(1, R);
-   out[2] = get_byte(2, R);
-   out[3] = get_byte(3, R);
-   out[4] = get_byte(0, L);
-   out[5] = get_byte(1, L);
-   out[6] = get_byte(2, L);
-   out[7] = get_byte(3, L);
+
+   for (int i=0; i<4; i++)
+        out[i] = get_byte(i, R);
+
+   for (int i=0; i<4; i++)
+        out[i+4] = get_byte(i, L);
    }
 
 /*************************************************
