@@ -36,18 +36,6 @@ void GOST::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
         out[i] = get_byte(3-i, N2);
    for (int i=4; i<8; i++)
         out[i] = get_byte(7-i, N1);
-
-   /*
-   out[0] = get_byte(3, N2);
-   out[1] = get_byte(2, N2);
-   out[2] = get_byte(1, N2);
-   out[3] = get_byte(0, N2);
-
-   out[4] = get_byte(3, N1);
-   out[5] = get_byte(2, N1);
-   out[6] = get_byte(1, N1);
-   out[7] = get_byte(0, N1);
-    */
 }
 
 /*************************************************
