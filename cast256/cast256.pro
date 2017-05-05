@@ -4,13 +4,13 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+    cast256.cpp \
     cast_tab.cpp \
-    cast5.cpp \
+    cast256-main.cpp \
     ../exceptn.cpp \
     ../mlock.cpp \
     ../opencl.cpp \
-    ../util.cpp \
-    cast5-main.cpp
+    ../util.cpp
 
 INCLUDEPATH += \
     ../include
