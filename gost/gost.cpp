@@ -45,50 +45,28 @@ void GOST::decrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    {
    u32bit N1 = make_u32bit(in[3], in[2], in[1], in[0]),
           N2 = make_u32bit(in[7], in[6], in[5], in[4]);
-   round(N2, N1 + EK[ 0]);
-   round(N1, N2 + EK[ 1]);
-   round(N2, N1 + EK[ 2]);
-   round(N1, N2 + EK[ 3]);
-   round(N2, N1 + EK[ 4]);
-   round(N1, N2 + EK[ 5]);
-   round(N2, N1 + EK[ 6]);
-   round(N1, N2 + EK[ 7]);
 
-   round(N2, N1 + EK[ 7]);
-   round(N1, N2 + EK[ 6]);
-   round(N2, N1 + EK[ 5]);
-   round(N1, N2 + EK[ 4]);
-   round(N2, N1 + EK[ 3]);
-   round(N1, N2 + EK[ 2]);
-   round(N2, N1 + EK[ 1]);
-   round(N1, N2 + EK[ 0]);
+   for (int i=0; i<8; i++)
+   {
+       if (i%2 == 0)
+           round(N2, N1 + EK[ i]);
+       else
+           round(N1, N2 + EK[ i]);
+   }
 
-   round(N2, N1 + EK[ 7]);
-   round(N1, N2 + EK[ 6]);
-   round(N2, N1 + EK[ 5]);
-   round(N1, N2 + EK[ 4]);
-   round(N2, N1 + EK[ 3]);
-   round(N1, N2 + EK[ 2]);
-   round(N2, N1 + EK[ 1]);
-   round(N1, N2 + EK[ 0]);
+   for (int j=0; j<3; j++)
+        for (int i=7; i>=0; i--)
+        {
+            if (i%2 == 1)
+                round(N2, N1 + EK[ i]);
+            else
+                round(N1, N2 + EK[ i]);
+        }
 
-   round(N2, N1 + EK[ 7]);
-   round(N1, N2 + EK[ 6]);
-   round(N2, N1 + EK[ 5]);
-   round(N1, N2 + EK[ 4]);
-   round(N2, N1 + EK[ 3]);
-   round(N1, N2 + EK[ 2]);
-   round(N2, N1 + EK[ 1]);
-   round(N1, N2 + EK[ 0]);
-
-   out[0] = get_byte(3, N2);
-   out[1] = get_byte(2, N2);
-   out[2] = get_byte(1, N2);
-   out[3] = get_byte(0, N2);
-   out[4] = get_byte(3, N1);
-   out[5] = get_byte(2, N1);
-   out[6] = get_byte(1, N1);
-   out[7] = get_byte(0, N1);
+   for (int i=0; i<4; i++)
+        out[i] = get_byte(3-i, N2);
+   for (int i=4; i<8; i++)
+        out[i] = get_byte(7-i, N1);
    }
 
 /*************************************************
