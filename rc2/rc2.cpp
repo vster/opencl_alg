@@ -34,10 +34,14 @@ void RC2::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    mix(R0, R1, R2, R3,14);
    mix(R0, R1, R2, R3,15);
 
-   out[0] = get_byte(1, R0); out[1] = get_byte(0, R0);
-   out[2] = get_byte(1, R1); out[3] = get_byte(0, R1);
-   out[4] = get_byte(1, R2); out[5] = get_byte(0, R2);
-   out[6] = get_byte(1, R3); out[7] = get_byte(0, R3);
+   out[0] = get_byte(1, R0);
+   out[1] = get_byte(0, R0);
+   out[2] = get_byte(1, R1);
+   out[3] = get_byte(0, R1);
+   out[4] = get_byte(1, R2);
+   out[5] = get_byte(0, R2);
+   out[6] = get_byte(1, R3);
+   out[7] = get_byte(0, R3);
    }
 
 /*************************************************
@@ -47,16 +51,34 @@ void RC2::decrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    {
    u16bit R0 = make_u16bit(in[1], in[0]), R1 = make_u16bit(in[3], in[2]),
           R2 = make_u16bit(in[5], in[4]), R3 = make_u16bit(in[7], in[6]);
-   rmix(R0, R1, R2, R3,15); rmix(R0, R1, R2, R3,14); rmix(R0, R1, R2, R3,13);
-   rmix(R0, R1, R2, R3,12); rmix(R0, R1, R2, R3,11); rmash(R0, R1, R2, R3);
-   rmix(R0, R1, R2, R3,10); rmix(R0, R1, R2, R3, 9); rmix(R0, R1, R2, R3, 8);
-   rmix(R0, R1, R2, R3, 7); rmix(R0, R1, R2, R3, 6); rmix(R0, R1, R2, R3, 5);
-   rmash(R0, R1, R2, R3);   rmix(R0, R1, R2, R3, 4); rmix(R0, R1, R2, R3, 3);
-   rmix(R0, R1, R2, R3, 2); rmix(R0, R1, R2, R3, 1); rmix(R0, R1, R2, R3, 0);
-   out[0] = get_byte(1, R0); out[1] = get_byte(0, R0);
-   out[2] = get_byte(1, R1); out[3] = get_byte(0, R1);
-   out[4] = get_byte(1, R2); out[5] = get_byte(0, R2);
-   out[6] = get_byte(1, R3); out[7] = get_byte(0, R3);
+
+   rmix(R0, R1, R2, R3,15);
+   rmix(R0, R1, R2, R3,14);
+   rmix(R0, R1, R2, R3,13);
+   rmix(R0, R1, R2, R3,12);
+   rmix(R0, R1, R2, R3,11);
+   rmash(R0, R1, R2, R3);
+   rmix(R0, R1, R2, R3,10);
+   rmix(R0, R1, R2, R3, 9);
+   rmix(R0, R1, R2, R3, 8);
+   rmix(R0, R1, R2, R3, 7);
+   rmix(R0, R1, R2, R3, 6);
+   rmix(R0, R1, R2, R3, 5);
+   rmash(R0, R1, R2, R3);
+   rmix(R0, R1, R2, R3, 4);
+   rmix(R0, R1, R2, R3, 3);
+   rmix(R0, R1, R2, R3, 2);
+   rmix(R0, R1, R2, R3, 1);
+   rmix(R0, R1, R2, R3, 0);
+
+   out[0] = get_byte(1, R0);
+   out[1] = get_byte(0, R0);
+   out[2] = get_byte(1, R1);
+   out[3] = get_byte(0, R1);
+   out[4] = get_byte(1, R2);
+   out[5] = get_byte(0, R2);
+   out[6] = get_byte(1, R3);
+   out[7] = get_byte(0, R3);
    }
 
 /*************************************************
@@ -88,7 +110,10 @@ void RC2::rmix(u16bit& R0, u16bit& R1, u16bit& R2,
 *************************************************/
 void RC2::mash(u16bit& R0, u16bit& R1, u16bit& R2, u16bit& R3) const
    {
-   R0 += K[R3 % 64]; R1 += K[R0 % 64]; R2 += K[R1 % 64]; R3 += K[R2 % 64];
+   R0 += K[R3 % 64];
+   R1 += K[R0 % 64];
+   R2 += K[R1 % 64];
+   R3 += K[R2 % 64];
    }
 
 /*************************************************
@@ -96,7 +121,10 @@ void RC2::mash(u16bit& R0, u16bit& R1, u16bit& R2, u16bit& R3) const
 *************************************************/
 void RC2::rmash(u16bit& R0, u16bit& R1, u16bit& R2, u16bit& R3) const
    {
-   R3 -= K[R2 % 64]; R2 -= K[R1 % 64]; R1 -= K[R0 % 64]; R0 -= K[R3 % 64];
+   R3 -= K[R2 % 64];
+   R2 -= K[R1 % 64];
+   R1 -= K[R0 % 64];
+   R0 -= K[R3 % 64];
    }
 
 /*************************************************
