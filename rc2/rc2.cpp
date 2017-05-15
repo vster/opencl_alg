@@ -14,12 +14,26 @@ void RC2::encrypt(const byte in[BLOCKSIZE], byte out[BLOCKSIZE]) const
    {
    u16bit R0 = make_u16bit(in[1], in[0]), R1 = make_u16bit(in[3], in[2]),
           R2 = make_u16bit(in[5], in[4]), R3 = make_u16bit(in[7], in[6]);
-   mix(R0, R1, R2, R3, 0); mix(R0, R1, R2, R3, 1); mix(R0, R1, R2, R3, 2);
-   mix(R0, R1, R2, R3, 3); mix(R0, R1, R2, R3, 4); mash(R0, R1, R2, R3);
-   mix(R0, R1, R2, R3, 5); mix(R0, R1, R2, R3, 6); mix(R0, R1, R2, R3, 7);
-   mix(R0, R1, R2, R3, 8); mix(R0, R1, R2, R3, 9); mix(R0, R1, R2, R3,10);
-   mash(R0, R1, R2, R3);   mix(R0, R1, R2, R3,11); mix(R0, R1, R2, R3,12);
-   mix(R0, R1, R2, R3,13); mix(R0, R1, R2, R3,14); mix(R0, R1, R2, R3,15);
+
+   mix(R0, R1, R2, R3, 0);
+   mix(R0, R1, R2, R3, 1);
+   mix(R0, R1, R2, R3, 2);
+   mix(R0, R1, R2, R3, 3);
+   mix(R0, R1, R2, R3, 4);
+   mash(R0, R1, R2, R3);
+   mix(R0, R1, R2, R3, 5);
+   mix(R0, R1, R2, R3, 6);
+   mix(R0, R1, R2, R3, 7);
+   mix(R0, R1, R2, R3, 8);
+   mix(R0, R1, R2, R3, 9);
+   mix(R0, R1, R2, R3,10);
+   mash(R0, R1, R2, R3);
+   mix(R0, R1, R2, R3,11);
+   mix(R0, R1, R2, R3,12);
+   mix(R0, R1, R2, R3,13);
+   mix(R0, R1, R2, R3,14);
+   mix(R0, R1, R2, R3,15);
+
    out[0] = get_byte(1, R0); out[1] = get_byte(0, R0);
    out[2] = get_byte(1, R1); out[3] = get_byte(0, R1);
    out[4] = get_byte(1, R2); out[5] = get_byte(0, R2);
